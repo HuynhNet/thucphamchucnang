@@ -48,7 +48,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h2>Sản Phẩm Nỗi Bật</h2>
+                        <h2 style="font-family: 'Times New Roman'">Sản Phẩm Nỗi Bật</h2>
                     </div>
                 </div>
             </div>

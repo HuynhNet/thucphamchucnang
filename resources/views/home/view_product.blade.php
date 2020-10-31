@@ -10,7 +10,7 @@
                     <div class="breadcrumb__text">
                         <h2>Xem Chi Tiết Sản Phẩm</h2>
                         <div class="breadcrumb__option">
-                            <a href="{{ url('/') }}">Home</a>
+                            <a href="{{ url('/') }}">Trang chủ</a>
                             <a href="">Thực phẩm chức năng</a>
                             <span>Viên uống hỗ trợ giảm cân Venus Slim</span>
                         </div>

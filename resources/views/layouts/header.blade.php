@@ -21,7 +21,7 @@
                             </ul>
                         </li>--}}
                         <li><a href="{{ url('/list-product') }}">Danh sách</a></li>
-                        <li><a href="">Tin tức</a></li>
+                        <li><a href="{{ url('news') }}">Tin tức</a></li>
                         <li><a href="{{ url('/contact') }}">Giới thiệu</a></li>
                     </ul>
                 </nav>

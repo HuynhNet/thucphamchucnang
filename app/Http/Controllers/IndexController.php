@@ -55,4 +55,16 @@ class IndexController extends Controller
         return view('home.shopping_cart');
     }
 
+    public function checkout(){
+        return view('home.checkout');
+    }
+
+    public function new(){
+        return view('home.news');
+    }
+
+    public function newDetail(){
+        return view('home.new_detail');
+    }
+
 }

@@ -10,7 +10,7 @@
                     <div class="breadcrumb__text">
                         <h2>Giỏ Hàng</h2>
                         <div class="breadcrumb__option">
-                            <a href="{{ url('/') }}">Home</a>
+                            <a href="{{ url('/') }}">Trang chủ</a>
                             <span>Giỏ Hàng</span>
                         </div>
                     </div>
@@ -133,7 +133,7 @@
                             <li>Tổng Tiền <span>200.000 VNĐ</span></li>
                             <li>Tổng <span>200.000 VNĐ</span></li>
                         </ul>
-                        <a href="#" class="primary-btn">THANH TOÁN</a>
+                        <a href="{{ url('/checkout') }}" class="primary-btn">THANH TOÁN</a>
                     </div>
                 </div>
             </div>

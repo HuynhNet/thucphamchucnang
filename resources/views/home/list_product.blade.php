@@ -8,9 +8,9 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Danh Sách Sản Phẩm</h2>
+                        <h2 style="font-family: 'Times New Roman'">Danh Sách Sản Phẩm</h2>
                         <div class="breadcrumb__option">
-                            <a href="{{ url('/') }}">Home</a>
+                            <a href="{{ url('/') }}">Trang chủ</a>
                             <span>Danh sách sản phẩm</span>
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                 <div class="col-lg-3 col-md-5">
                     <div class="sidebar">
                         <div class="sidebar__item">
-                            <h4>Loại Sản Phẩm</h4>
+                            <h4 style="font-family: 'Times New Roman'">Loại Sản Phẩm</h4>
                             <ul>
                                 <li><a href="#">Giảm cân</a></li>
                                 <li><a href="#">Bồi dưỡng tóc</a></li>
@@ -45,7 +45,7 @@
 
                         <div class="sidebar__item">
                             <div class="latest-product__text">
-                                <h4>Sản Phẩm mới</h4>
+                                <h4 style="font-family: 'Times New Roman'">Sản Phẩm mới</h4>
                                 <div class="latest-product__slider owl-carousel">
                                     <div class="latest-prdouct__slider__item">
                                         <a href="#" class="latest-product__item">
@@ -113,7 +113,7 @@
                 <div class="col-lg-9 col-md-7">
                     <div class="product__discount">
                         <div class="section-title product__discount__title">
-                            <h2>Khuyến Mãi</h2>
+                            <h2 style="font-family: 'Times New Roman'">Khuyến Mãi</h2>
                         </div>
                         <div class="row">
                             <div class="product__discount__slider owl-carousel">
@@ -232,7 +232,7 @@
                         <div class="row">
                             <div class="col-lg-4 col-md-5">
                                 <div class="filter__sort">
-                                    <span>Lọc theo</span>
+                                    <span style="font-family: 'Times New Roman'">Lọc theo</span>
                                     <select>
                                         <option value="0">Giá thấp đến cao</option>
                                         <option value="0">Giá cao đến thấp</option>
