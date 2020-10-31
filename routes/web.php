@@ -1,21 +1,19 @@
 <?php
 
+use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [IndexController::class , 'index']);
+Route::get('/login', [IndexController::class , 'login']);
+Route::get('/register', [IndexController::class , 'register']);
+Route::post('/post-login', [IndexController::class, 'postLogin']);
+
+Route::get('/contact', [IndexController::class, 'contact']);
+
+Route::get('/view-product', [IndexController::class, 'viewProduct']);
+Route::get('/list-product', [IndexController::class, 'listProduct']);
+Route::get('/shopping-cart', [IndexController::class, 'shoppingCart']);
 
 
 Route::group(['prefix' => 'admin'], function () {

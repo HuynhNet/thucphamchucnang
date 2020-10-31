@@ -50,8 +50,8 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'root' => storage_path('app/public/storage/'),
+            'url' => 'http://localhost/ThucPhamChucNang/public/storage/',
             'visibility' => 'public',
         ],
 
@@ -79,7 +79,7 @@ return [
     */
 
     'links' => [
-        public_path('storage') => storage_path('app/public'),
+        public_path('storage') => storage_path('app/public/storage'),
     ],
 
 ];
