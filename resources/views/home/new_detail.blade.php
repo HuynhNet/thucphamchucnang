@@ -45,6 +45,11 @@
                                 <li><a href="#">Bồi dưỡng tóc</a></li>
                             </ul>
                         </div>
+                        <style>
+                            .blog__sidebar__item h6{
+                                font-family: "Times New Roman";
+                            }
+                        </style>
                         <div class="blog__sidebar__item">
                             <h4 style="font-family: 'Times New Roman'">Tin Tức Gần Đây</h4>
                             <div class="blog__sidebar__recent">
@@ -75,17 +80,6 @@
                                         <span>25/10/2020</span>
                                     </div>
                                 </a>
-                            </div>
-                        </div>
-                        <div class="blog__sidebar__item">
-                            <h4 style="font-family: 'Times New Roman'">Tìm Kiếm Theo</h4>
-                            <div class="blog__sidebar__item__tags">
-                                <a href="#">Apple</a>
-                                <a href="#">Beauty</a>
-                                <a href="#">Vegetables</a>
-                                <a href="#">Fruit</a>
-                                <a href="#">Healthy Food</a>
-                                <a href="#">Lifestyle</a>
                             </div>
                         </div>
                     </div>
@@ -150,6 +144,11 @@
                 </div>
             </div>
             <div class="row">
+                <style>
+                    .blog__item h5{
+                        font-family: "Times New Roman";
+                    }
+                </style>
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="blog__item">
                         <div class="blog__item__pic">

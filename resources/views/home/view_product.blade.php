@@ -45,7 +45,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__text">
-                        <h3>Viên uống hỗ trợ giảm cân Venus Slim</h3>
+                        <h3 style="font-family: 'Times New Roman'">Viên uống hỗ trợ giảm cân Venus Slim</h3>
                         <div class="product__details__rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -92,6 +92,11 @@
                                    aria-selected="false">Bình Luận</a>
                             </li>
                         </ul>
+                        <style>
+                            .tab-content p{
+                                font-family: "Times New Roman";
+                            }
+                        </style>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 <div class="product__details__tab__desc">

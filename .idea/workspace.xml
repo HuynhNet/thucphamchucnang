@@ -11,23 +11,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12331319-11cc-45cb-bcaf-958e58fbf8dc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Test_VNPT/.idea/Test_VNPT.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Test_VNPT/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Test_VNPT/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Test_VNPT/.idea/phpunit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Test_VNPT/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Test_VNPT/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/home/checkout.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/home/new_detail.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/home/news.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../demo/.idea/demo.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home/list_product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home/list_product.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home/shopping_cart.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home/shopping_cart.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home/new_detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home/new_detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home/news.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home/news.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/home/view_product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home/view_product.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,7 +200,9 @@
       <workItem from="1603811359703" duration="1471000" />
       <workItem from="1604074801088" duration="2778000" />
       <workItem from="1604078806478" duration="1752000" />
-      <workItem from="1604127100242" duration="11775000" />
+      <workItem from="1604127100242" duration="11953000" />
+      <workItem from="1604152567961" duration="143000" />
+      <workItem from="1604218831450" duration="729000" />
     </task>
     <servers />
   </component>
@@ -236,10 +226,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1603468161483" />
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1603814162822">
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1604152712573">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1603814162822" />
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1604152712573" />
     <state x="184" y="9" key="SettingsEditor" timestamp="1604078905750">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
