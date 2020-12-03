@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -18,6 +19,8 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
+    <script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
+    <script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="{{ asset('public/html/css/bootstrap.min.css') }}" type="text/css">
@@ -28,6 +31,7 @@
     <link rel="stylesheet" href="{{ asset('public/html/css/owl.carousel.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('public/html/css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('public/html/css/style.css') }}" type="text/css">
+
 </head>
 
 <body style="font-family: Times New Roman;">
@@ -60,6 +64,11 @@
 <script src="{{ asset('public/html/js/mixitup.min.js') }}"></script>
 <script src="{{ asset('public/html/js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('public/html/js/main.js') }}"></script>
+
+{{--<script type="text/javascript" src="//fsi-site.neptunelabs.com/fsi/viewer/applications/quickzoom/js/fsiquickzoom.js"></script>--}}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 
 </body>
 

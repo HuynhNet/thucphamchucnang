@@ -27,60 +27,103 @@
                 <h4>Chi Tiết Thanh Toán</h4>
                 <form action="#">
                     <div class="row">
-                        <div class="col-lg-8 col-md-6">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Họ tên<span>*</span></p>
-                                        <input type="text">
+                        @if(Auth::check())
+                            <div class="col-lg-8 col-md-6">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="checkout__input">
+                                            <p>Họ tên<span>*</span></p>
+                                            <input type="text" value="{{ Auth::user()->name }}" disabled>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Phone<span>*</span></p>
-                                        <input type="text">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="checkout__input">
+                                            <p>Phone<span>*</span></p>
+                                            <input type="text" value="{{ Auth::user()->phone }}" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="checkout__input">
+                                            <p>Email<span>*</span></p>
+                                            <input type="text" value="{{ Auth::user()->email }}" disabled>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Email<span>*</span></p>
-                                        <input type="text">
-                                    </div>
+                                <div class="checkout__input">
+                                    <p>Địa chỉ<span>*</span></p>
+                                    <textarea class="form-control" name="" id="" rows="3">
+                                        {{ Auth::user()->address }}
+                                    </textarea>
                                 </div>
                             </div>
-                            <div class="checkout__input">
-                                <p>Địa chỉ<span>*</span></p>
-                                <textarea class="form-control" name="" id="" rows="3"></textarea>
+                        @else
+                            <div class="col-lg-8 col-md-6">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="checkout__input">
+                                            <p>Họ tên<span>*</span></p>
+                                            <input type="text" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="checkout__input">
+                                            <p>Phone<span>*</span></p>
+                                            <input type="text" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="checkout__input">
+                                            <p>Email<span>*</span></p>
+                                            <input type="text" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="checkout__input">
+                                    <p>Địa chỉ<span>*</span></p>
+                                    <textarea class="form-control" name="" id="" rows="3">
+
+                                    </textarea>
+                                </div>
+                                <div class="checkout__input__checkbox">
+                                    <label for="acc">
+                                        Đăng ký
+                                        <input type="checkbox" id="acc">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <p>Tạo tài khoản bằng cách nhập thông tin bên dưới. Nếu bạn là khách hàng cũ, vui lòng đăng nhập ở đầu trang</p>
+                                <div class="checkout__input">
+                                    <p>Mật khẩu<span>*</span></p>
+                                    <input type="password">
+                                </div>
                             </div>
-                            <div class="checkout__input__checkbox">
-                                <label for="acc">
-                                    Đăng ký
-                                    <input type="checkbox" id="acc">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <p>Tạo tài khoản bằng cách nhập thông tin bên dưới. Nếu bạn là khách hàng cũ, vui lòng đăng nhập ở đầu trang</p>
-                            <div class="checkout__input">
-                                <p>Mật khẩu<span>*</span></p>
-                                <input type="password">
-                            </div>
-                        </div>
+                        @endif
+
                         <div class="col-lg-4 col-md-6">
                             <div class="checkout__order">
                                 <h4>Đơn Hàng</h4>
-                                <div class="checkout__order__products">Sản phẩm <span>Tổng</span></div>
-                                <ul>
-                                    <li>Vegetable’s Package <span>100.000 VNĐ</span></li>
-                                    <li>Fresh Vegetable <span>50.000 VNĐ</span></li>
-                                    <li>Organic Bananas <span>150.000 VNĐ</span></li>
-                                </ul>
-                                <div class="checkout__order__subtotal">Tổng tiền <span>200.000 VNĐ</span></div>
-                                <div class="checkout__order__total">Tổng <span>200.000 VNĐ</span></div>
+                                @if(Session::has('cart'))
+                                    <div class="checkout__order__products">Sản phẩm <span>Tổng</span></div>
+                                    <ul>
+                                        @foreach($product_cart as $product)
+                                            <li>
+                                                {{ $product['item']['name_product'] }}
+                                                <span>{{number_format($product['price'] * $product['qty']) }} {{ $product['item']['unit'] }}</span>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                    <div class="checkout__order__total">Tổng <span>{{ number_format($totalPrice) }} đ</span></div>
+                                @else
+                                    <p>Không có sản phẩm trong giỏ hàng</p>
+                                @endif
                                 <button type="submit" class="site-btn">ĐẶT HÀNG</button>
                             </div>
                         </div>
+
                     </div>
                 </form>
             </div>

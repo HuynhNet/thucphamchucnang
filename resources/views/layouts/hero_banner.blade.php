@@ -6,20 +6,12 @@
                 <div class="hero__categories">
                     <div class="hero__categories__all">
                         <i class="fa fa-bars"></i>
-                        <span>Loại Sản Phẩm</span>
+                        <span>Loại sản phẩm </span>
                     </div>
                     <ul>
-                        <li><a href="#">Giảm cân</a></li>
-                        <li><a href="#">Bồi dưỡng tóc</a></li>
-                        <li><a href="#">Chăm sóc da</a></li>
-                        <li><a href="#">Giảm cân</a></li>
-                        <li><a href="#">Bồi dưỡng tóc</a></li>
-                        <li><a href="#">Chăm sóc da</a></li>
-                        <li><a href="#">Giảm cân</a></li>
-                        <li><a href="#">Bồi dưỡng tóc</a></li>
-                        <li><a href="#">Chăm sóc da</a></li>
-                        <li><a href="#">Giảm cân</a></li>
-                        <li><a href="#">Giảm cân</a></li>
+                        @foreach($typeProduct as $typeProduct)
+                            <li><a href="#">{{ $typeProduct->name }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -28,8 +20,7 @@
                     <div class="hero__search__form">
                         <form action="#">
                             <div class="hero__search__categories">
-                                All Categories
-                                <span class="arrow_carrot-down"></span>
+                                Bạn cần gì ?
                             </div>
                             <input type="text" placeholder="What do yo u need?">
                             <button type="submit" class="site-btn">SEARCH</button>
@@ -40,14 +31,40 @@
                             color: #007bff;
                         }
                     </style>
-                    <div class="hero__search__phone">
-                        <div class="hero__search__phone__icon">
-                            <a href="{{ url('/login') }}"><i class="fa fa-user" aria-hidden="true" title="Đăng nhập"></i></a>
+                    @if(Auth::check())
+                        <div class="hero__search__phone">
+                            <div class="btn-group">
+                                <style>
+                                    .dropdown:hover>.dropdown-menu {
+                                        display: block;
+                                    }
+
+                                    .dropdown>.dropdown-toggle:active {
+                                        pointer-events: none;
+                                    }
+                                </style>
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{ Auth::user()->name }}
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="#">Thông tin</a>
+                                        <a class="dropdown-item" href="#">Đăng xuất</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="hero__search__phone__icon">
-                            <a href="{{url('/register')}}"><i class="fa fa-arrow-circle-o-right" aria-hidden="true" title="Đăng ký"></i></a>
+                    @else
+                        <div class="hero__search__phone">
+                            <div class="hero__search__phone__icon">
+                                <a href="{{ url('/login') }}"><i class="fa fa-user" aria-hidden="true" title="Đăng nhập"></i></a>
+                            </div>
+                            <div class="hero__search__phone__icon">
+                                <a href="{{url('/register')}}"><i class="fa fa-arrow-circle-o-right" aria-hidden="true" title="Đăng ký"></i></a>
+                            </div>
                         </div>
-                    </div>
+                    @endif
+
                 </div>
                 <div id="carouselId" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
@@ -57,13 +74,13 @@
                     </ol>
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
-                            <img src="{{ asset('public/html/img/hero/banner.jpg') }}" alt="First slide">
+                            <img src="{{ asset('public/img/banner6.png') }}" alt="First slide">
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('public/html/img/hero/banner.jpg') }}" alt="Second slide">
+                            <img src="{{ asset('public/img/banner3.png') }}" alt="Second slide">
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('public/html/img/hero/banner.jpg') }}" alt="Third slide">
+                            <img src="{{ asset('public/img/banner7.png') }}" alt="Third slide">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselId" role="button" data-slide="prev">

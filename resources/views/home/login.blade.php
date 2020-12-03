@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('public/login/assets/css/login.css') }}">
+    <script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
+    <script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
 </head>
 <body>
 <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
@@ -24,6 +26,13 @@
                             <a href="{{ url('/') }}"><img src="{{ asset('public/html/img/logo.png') }}" alt=""></a>
                         </div>
                         <p class="login-card-description">Đăng nhập</p>
+
+                        @if(session()->has('message'))
+                            <div class="alert alert-success" style="width: 80%;">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                {{ session('message') }}
+                            </div>
+                        @endif
 
                         <form id="loginForm" action="{{ url('/post-login') }}" method="POST"
                               class="needs-validation" @submit="checkSubmit" novalidate="true">
@@ -59,5 +68,19 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <script src="{{ asset('public/js/app.js') }}" defer></script>
+<script>
+    var msg1 = '{{Session::get('register_success')}}';
+    var exist1 = '{{Session::has('register_success')}}';
+    if(exist1){
+        swal({
+            title: "Đã đăng ký tài khoản thành công.",
+            text: "",
+            type: "success",
+            timer: 1200,
+            showConfirmButton: false,
+            position: 'top-end',
+        });
+    }
+</script>
 </body>
 </html>
