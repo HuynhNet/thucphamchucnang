@@ -167,6 +167,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <h6>Bình luận</h6>
+                                                @if(Auth::check())
                                                 <form action="{{ route('comment', [$product->id, Auth::user()->id]) }}"
                                                       method="POST">
                                                     @csrf
@@ -176,17 +177,25 @@
                                                         <textarea class="form-control" name="comment" rows="3"></textarea>
                                                     </div>
                                                     <div class="form-group text-right">
-                                                        @if(Auth::check())
-                                                            <button type="submit" class="btn btn-primary" role="button">
-                                                                Bình Luận
-                                                            </button>
-                                                        @else
+                                                        <button type="submit" class="btn btn-primary" role="button">
+                                                            Bình Luận
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                                @else
+                                                    <form action=""
+                                                          method="POST">
+                                                        <div class="form-group">
+                                                            <label for=""></label>
+                                                            <textarea class="form-control" name="comment" rows="3"></textarea>
+                                                        </div>
+                                                        <div class="form-group text-right">
                                                             <button onclick="return checkLogin()" class="btn btn-primary" role="button">
                                                                 Bình Luận
                                                             </button>
-                                                        @endif
-                                                    </div>
-                                                </form>
+                                                        </div>
+                                                    </form>
+                                                @endif
                                             </div>
 
                                             <div class="col-md-6">

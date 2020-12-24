@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Tin Tức</h2>
+                        <h2 style="font-family: 'Times New Roman'">Tin Tức</h2>
                         <div class="breadcrumb__option">
                             <a href="{{ url('/') }}">Trang chủ</a>
                             <span>Tin tức</span>
@@ -51,33 +51,18 @@
                         <div class="blog__sidebar__item">
                             <h4 style="font-family: 'Times New Roman'">Tin Tức Gần Đây</h4>
                             <div class="blog__sidebar__recent">
-                                <a href="#" class="blog__sidebar__recent__item">
-                                    <div class="blog__sidebar__recent__item__pic">
-                                        <img src="{{ asset('public/html/img/blog/sidebar/sr-1.jpg') }}" alt="">
-                                    </div>
-                                    <div class="blog__sidebar__recent__item__text">
-                                        <h6>09 Kinds Of Vegetables<br /> Protect The Liver</h6>
-                                        <span>25/10/2020</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="blog__sidebar__recent__item">
-                                    <div class="blog__sidebar__recent__item__pic">
-                                        <img src="{{ asset('public/html/img/blog/sidebar/sr-2.jpg') }}" alt="">
-                                    </div>
-                                    <div class="blog__sidebar__recent__item__text">
-                                        <h6>Tips You To Balance<br /> Nutrition Meal Day</h6>
-                                        <span>25/10/2020</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="blog__sidebar__recent__item">
-                                    <div class="blog__sidebar__recent__item__pic">
-                                        <img src="{{ asset('public/html/img/blog/sidebar/sr-3.jpg') }}" alt="">
-                                    </div>
-                                    <div class="blog__sidebar__recent__item__text">
-                                        <h6>4 Principles Help You Lose <br />Weight With Vegetables</h6>
-                                        <span>25/10/2020</span>
-                                    </div>
-                                </a>
+                                @foreach($tingans as $tingan)
+                                    <a href="{{ route('newDetail', $tingan->id) }}" class="blog__sidebar__recent__item">
+                                        <div class="blog__sidebar__recent__item__pic">
+                                            <img style="width: 100px; height: 100px;"
+                                                 src="{{ asset('public/tintuc/'.$tingan->image) }}" alt="">
+                                        </div>
+                                        <div class="blog__sidebar__recent__item__text">
+                                            <h6>{{ $tingan->title }}</h6>
+                                            <span>{{ \Carbon\Carbon::create($tingan->created_at)->format('M d Y')  }}</span>
+                                        </div>
+                                    </a>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -89,108 +74,25 @@
                                 font-family: "Times New Roman";
                             }
                         </style>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="{{ asset('public/html/img/blog/blog-2.jpg') }}" alt="">
-                                </div>
-                                <div class="blog__item__text">
-                                    <ul>
-                                        <li><i class="fa fa-calendar-o"></i> 29/10/2020</li>
-                                        <li><i class="fa fa-comment-o"></i> 5</li>
-                                    </ul>
-                                    <h5><a href="#">6 cách chuẩn bị bữa sáng cho 30</a></h5>
-                                    <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam
-                                        quaerat </p>
-                                    <a href="{{ url('/new-detail') }}" class="blog__btn">Xem chi tiết <span class="arrow_right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="{{ asset('public/html/img/blog/blog-3.jpg') }}" alt="">
-                                </div>
-                                <div class="blog__item__text">
-                                    <ul>
-                                        <li><i class="fa fa-calendar-o"></i> 29/10/2020</li>
-                                        <li><i class="fa fa-comment-o"></i> 5</li>
-                                    </ul>
-                                    <h5><a href="#">6 cách chuẩn bị bữa sáng cho 30</a></h5>
-                                    <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam
-                                        quaerat </p>
-                                    <a href="{{ url('/new-detail') }}" class="blog__btn">Xem chi tiết <span class="arrow_right"></span></a>
+                        @foreach($news as $new)
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="blog__item">
+                                    <div class="blog__item__pic">
+                                        <img style="width: 300px; height: 200px" src="{{ asset('public/tintuc/'.$new->image) }}" alt="">
+                                    </div>
+                                    <div class="blog__item__text">
+                                        <ul>
+                                            <li><i class="fa fa-calendar-o"></i> {{ \Carbon\Carbon::create($new->created_at)->format('M d Y') }}</li>
+                                            <li><i class="fa fa-comment-o"></i> 5</li>
+                                        </ul>
+                                        <h5><a href="{{ route('newDetail', $new->id) }}">{{ $new->title }}</a></h5>
+                                        <p>{!! Str::limit($new->content,100,'...') !!}</p>
+                                        <a href="{{ route('newDetail', $new->id) }}" class="blog__btn">Xem chi tiết
+                                            <span class="arrow_right"></span></a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="{{ asset('public/html/img/blog/blog-1.jpg') }}" alt="">
-                                </div>
-                                <div class="blog__item__text">
-                                    <ul>
-                                        <li><i class="fa fa-calendar-o"></i> 29/10/2020</li>
-                                        <li><i class="fa fa-comment-o"></i> 5</li>
-                                    </ul>
-                                    <h5><a href="#">Mẹo nấu ăn giúp nấu ăn đơn giản</a></h5>
-                                    <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam
-                                        quaerat </p>
-                                    <a href="{{ url('/new-detail') }}" class="blog__btn">Xem chi tiết <span class="arrow_right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="{{ asset('public/html/img/blog/blog-4.jpg') }}" alt="">
-                                </div>
-                                <div class="blog__item__text">
-                                    <ul>
-                                        <li><i class="fa fa-calendar-o"></i> 29/10/2020</li>
-                                        <li><i class="fa fa-comment-o"></i> 5</li>
-                                    </ul>
-                                    <h5><a href="#">Mẹo nấu ăn giúp nấu ăn đơn giản</a></h5>
-                                    <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam
-                                        quaerat </p>
-                                    <a href="{{ url('/new-detail') }}" class="blog__btn">Xem chi tiết <span class="arrow_right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="{{ asset('public/html/img/blog/blog-4.jpg') }}" alt="">
-                                </div>
-                                <div class="blog__item__text">
-                                    <ul>
-                                        <li><i class="fa fa-calendar-o"></i> 29/10/2020</li>
-                                        <li><i class="fa fa-comment-o"></i> 5</li>
-                                    </ul>
-                                    <h5><a href="#">Mẹo nấu ăn giúp nấu ăn đơn giản</a></h5>
-                                    <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam
-                                        quaerat </p>
-                                    <a href="{{ url('/new-detail') }}" class="blog__btn">Xem chi tiết <span class="arrow_right"></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="blog__item">
-                                <div class="blog__item__pic">
-                                    <img src="{{ asset('public/html/img/blog/blog-6.jpg') }}" alt="">
-                                </div>
-                                <div class="blog__item__text">
-                                    <ul>
-                                        <li><i class="fa fa-calendar-o"></i> 29/10/2020</li>
-                                        <li><i class="fa fa-comment-o"></i> 5</li>
-                                    </ul>
-                                    <h5><a href="#">Mẹo nấu ăn giúp nấu ăn đơn giản</a></h5>
-                                    <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam
-                                        quaerat </p>
-                                    <a href="{{ url('/new-detail') }}" class="blog__btn">Xem chi tiết <span class="arrow_right"></span></a>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

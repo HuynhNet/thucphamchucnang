@@ -32,9 +32,17 @@
     <link rel="stylesheet" href="{{ asset('public/html/css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('public/html/css/style.css') }}" type="text/css">
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
-<body style="font-family: Times New Roman;">
+<style>
+    body{
+        font-family: "Times New Roman";
+    }
+</style>
+
+<body>
 
 @include('layouts.header')
 @yield('hero_banner')

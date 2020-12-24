@@ -34,6 +34,89 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
+                        <h2 style="font-family: 'Times New Roman'">Sản Phẩm Khuyến mãi</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row featured__filter">
+                @foreach($promotion_products as $promotion_product)
+                    <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+                        <div class="featured__item">
+                            @php($image = DB::table('images')->where('product_id', $promotion_product->id)->get())
+                            @foreach($image as $image)
+                                <div class="featured__item__pic set-bg" data-setbg="{{ asset('public/img/'.$image->img_name) }}">
+                                    <ul class="featured__item__pic__hover">
+                                        @if(Auth::check())
+                                            @php($likes = DB::table('likes')->where('user_id', Auth::user()->id)->first())
+                                            @if($likes === null)
+                                                <li>
+                                                    <a href="{{ route('likeProduct', [$promotion_product->id, Auth::user()->id]) }}">
+                                                        <i class="fa fa-heart" title="Thích"></i>
+                                                    </a>
+                                                </li>
+                                            @else
+                                                @php($likes1 = DB::table('likes')->where('user_id', Auth::user()->id)->get())
+                                                @foreach($likes1 as $like)
+                                                    @if($like->product_id == $promotion_product->id)
+                                                        <li>
+                                                            <a disabled="true" style="background-color: red;">
+                                                                <i class="fa fa-heart" title="Đã thích"></i>
+                                                            </a>
+                                                        </li>
+                                                        @break
+                                                    @else
+                                                        <li>
+                                                            <a href="{{ route('likeProduct', [$promotion_product->id, Auth::user()->id]) }}">
+                                                                <i class="fa fa-heart" title="Thích"></i>
+                                                            </a>
+                                                        </li>
+                                                        @break
+                                                    @endif
+
+                                                @endforeach
+                                            @endif
+                                        @else
+                                            <li>
+                                                <a onclick="return checkLogin()">
+                                                    <i class="fa fa-heart" title="Thích"></i>
+                                                </a>
+                                            </li>
+                                        @endif
+                                        <li>
+                                            <a href="{{ route('viewProduct', $promotion_product->id) }}">
+                                                <i class="fa fa-retweet" title="Xem chi tiết"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('addCart', $promotion_product->id) }}">
+                                                <i class="fa fa-shopping-cart" title="Thêm vào giỏ hàng"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            @endforeach
+                            <div class="featured__item__text">
+                                <h6><a href="{{ route('viewProduct', $promotion_product->id) }}">{{ $promotion_product->name_product }}</a></h6>
+                                {{--@php($price = DB::table('prices')->where('id', $promotion_product->price)->get())
+                                @foreach($price as $price)
+
+                                @endforeach--}}
+                                <h5>{{ number_format($promotion_product->promotion_price) }} {{ $promotion_product->unit }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    <!-- Featured Section End -->
+
+    <!-- Featured Section Begin -->
+    <section class="featured spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
                         <h2 style="font-family: 'Times New Roman'">Sản Phẩm Nỗi Bật</h2>
                     </div>
                 </div>
@@ -47,9 +130,16 @@
                                 <div class="featured__item__pic set-bg" data-setbg="{{ asset('public/img/'.$image->img_name) }}">
                                     <ul class="featured__item__pic__hover">
                                         @if(Auth::check())
-                                            @php($likes = DB::table('likes')->where('user_id', Auth::user()->id)->get())
-                                            @if(!empty($likes))
-                                                @foreach($likes as $like)
+                                            @php($likes = DB::table('likes')->where('user_id', Auth::user()->id)->first())
+                                            @if($likes === null)
+                                                <li>
+                                                    <a href="{{ route('likeProduct', [$prominence_product->id, Auth::user()->id]) }}">
+                                                        <i class="fa fa-heart" title="Thích"></i>
+                                                    </a>
+                                                </li>
+                                            @else
+                                                @php($likes1 = DB::table('likes')->where('user_id', Auth::user()->id)->get())
+                                                @foreach($likes1 as $like)
                                                     @if($like->product_id == $prominence_product->id)
                                                         <li>
                                                             <a disabled="true" style="background-color: red;">
@@ -67,12 +157,6 @@
                                                     @endif
 
                                                 @endforeach
-                                            @else
-                                                <li>
-                                                    <a href="{{ route('likeProduct', [$prominence_product->id, Auth::user()->id]) }}">
-                                                        <i class="fa fa-heart" title="Thích"></i>
-                                                    </a>
-                                                </li>
                                             @endif
                                         @else
                                             <li>
@@ -290,41 +374,6 @@
         </div>
     </section>
 
-    <script>
-
-        var msg = '{{Session::get('add_cart_success')}}';
-        var exist = '{{Session::has('add_cart_success')}}';
-        if(exist){
-            swal({
-                title: "Đã thêm vào giỏ hàng",
-                text: "",
-                type: "success",
-                timer: 900,
-                showConfirmButton: false,
-                position: 'top-end',
-            });
-        }
-
-        var msg1 = '{{Session::get('likeProduct')}}';
-        var exist1 = '{{Session::has('likeProduct')}}';
-        if(exist1){
-            swal({
-                title: "Đã thích sản phẩm",
-                text: "",
-                type: "success",
-                timer: 900,
-                showConfirmButton: false,
-                position: 'top-end',
-            });
-        }
-
-        function checkLogin(e){
-            alert('Vui lòng đăng nhập để thích sản phẩm');
-            e.preventDefault();
-        }
-
-    </script>
-
     <!-- Load Facebook SDK for JavaScript -->
     <div id="fb-root"></div>
     <script>
@@ -341,7 +390,8 @@
             js = d.createElement(s); js.id = id;
             js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
             fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
 
     <!-- Your Chat Plugin code -->
     <div class="fb-customerchat"
@@ -350,6 +400,67 @@
          logged_in_greeting="Xin chào - Chúng tôi có thể giúp gì cho bạn?"
          logged_out_greeting="Xin chào - Chúng tôi có thể giúp gì cho bạn?">
     </div>
+
+    <script>
+
+        var msg = '{{Session::get('add_cart_success')}}';
+        var exist = '{{Session::has('add_cart_success')}}';
+        if(exist){
+            swal({
+                title: "Đã thêm vào giỏ hàng",
+                text: "",
+                type: "success",
+                timer: 1200,
+                showConfirmButton: false,
+                position: 'top-end',
+            });
+        }
+
+        var msg1 = '{{Session::get('likeProduct')}}';
+        var exist1 = '{{Session::has('likeProduct')}}';
+        if(exist1){
+            swal({
+                title: "Đã thích sản phẩm",
+                text: "",
+                type: "success",
+                timer: 1200,
+                showConfirmButton: false,
+                position: 'top-end',
+            });
+        }
+
+        {{--var msg2 = '{{Session::get('checkout_success')}}';--}}
+        {{--var exist2 = '{{Session::has('checkout_success')}}';--}}
+        {{--if(exist2){--}}
+        {{--    swal({--}}
+        {{--        title: "Bạn đã thanh toán thành công",--}}
+        {{--        text: "",--}}
+        {{--        type: "success",--}}
+        {{--        timer: 1200,--}}
+        {{--        showConfirmButton: false,--}}
+        {{--        position: 'top-end',--}}
+        {{--    });--}}
+        {{--}--}}
+
+        {{--var msg3 = '{{Session::get('checkout_fail')}}';--}}
+        {{--var exist3 = '{{Session::has('checkout_fail')}}';--}}
+        {{--if(exist3){--}}
+        {{--    swal({--}}
+        {{--        title: "Lỗi trong quá trình thanh toán dịch vụ",--}}
+        {{--        text: "",--}}
+        {{--        type: "success",--}}
+        {{--        timer: 1200,--}}
+        {{--        showConfirmButton: false,--}}
+        {{--        position: 'top-end',--}}
+        {{--    });--}}
+        {{--}--}}
+
+        function checkLogin(e){
+            alert('Vui lòng đăng nhập để thích sản phẩm');
+            e.preventDefault();
+        }
+
+    </script>
 
 @endsection
 

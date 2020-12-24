@@ -2,18 +2,13 @@
 @section('title', 'Giỏ hàng')
 
 @section('content')
-    <style>
-        * {
-            font-family: "Times New Roman";
-        }
-    </style>
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="{{ asset('public/html/img/breadcrumb.jpg') }}" style="font-family: 'Times New Roman'">
+    <section class="breadcrumb-section set-bg" data-setbg="{{ asset('public/html/img/breadcrumb.jpg') }}">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2 style="font-family: 'Times New Roman'">Thanh Toán</h2>
+                        <h2>Thanh Toán</h2>
                         <div class="breadcrumb__option">
                             <a href="{{ url('/') }}">Trang chủ</a>
                             <span>Thanh toán</span>
@@ -26,11 +21,11 @@
     <!-- Breadcrumb Section End -->
 
     <!-- Checkout Section Begin -->
-    <section class="checkout spad" style="font-family: 'Times New Roman'">
+    <section class="checkout spad">
         <div class="container">
             <div class="checkout__form">
                 <h4>Chi Tiết Thanh Toán</h4>
-                <form action="{{ url('/post-checkout') }}" method="post">
+                <form action="{{ route('postCheckoutArea') }}" method="post">
                     @csrf
 
                     <div class="row">
@@ -130,7 +125,7 @@
                                     <p>Không có sản phẩm trong giỏ hàng</p>
                                 @endif
 
-                                <button type="submit" class="site-btn" id="checkThanhToan">THANH TOÁN THÔNG QUA VNPAY</button>
+                                <button type="submit" class="site-btn" id="checkThanhToan">THANH TOÁN</button>
                             </div>
                         </div>
 

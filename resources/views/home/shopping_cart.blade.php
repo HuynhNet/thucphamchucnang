@@ -2,13 +2,14 @@
 @section('title', 'Giỏ hàng')
 
 @section('content')
+
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" data-setbg="{{ asset('public/html/img/breadcrumb.jpg') }}">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Giỏ Hàng</h2>
+                        <h2 style="font-family: 'Times New Roman'">Giỏ Hàng</h2>
                         <div class="breadcrumb__option">
                             <a href="{{ url('/') }}">Trang chủ</a>
                             <span>Giỏ Hàng</span>
@@ -86,15 +87,15 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="shoping__continue">
-                        <div class="shoping__discount">
-                            <h5 style="font-family: 'Times New Roman';">Mã giảm giá</h5>
-                            <form action="#">
-                                <input type="text" placeholder="Enter your coupon code">
-                                <button type="submit" class="site-btn">Áp dụng</button>
-                            </form>
-                        </div>
-                    </div>
+{{--                    <div class="shoping__continue">--}}
+{{--                        <div class="shoping__discount">--}}
+{{--                            <h5 style="font-family: 'Times New Roman';">Mã giảm giá</h5>--}}
+{{--                            <form action="#">--}}
+{{--                                <input type="text" placeholder="Enter your coupon code">--}}
+{{--                                <button type="submit" class="site-btn">Áp dụng</button>--}}
+{{--                            </form>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
                 <div class="col-lg-6">
                     <div class="shoping__checkout">
@@ -102,7 +103,9 @@
                         <ul>
                             <li>Tổng Tiền <span>{{ number_format($totalPrice) }} đ</span></li>
                         </ul>
-                        <a href="{{ url('/checkout') }}" class="primary-btn">THANH TOÁN</a>
+                        <a href="{{ url('/checkout') }}" class="primary-btn">THANH TOÁN ONLINE</a>
+                        <br>
+                        <a style="background-color: #7abaff;" href="{{ route('checkoutArea') }}" class="primary-btn">THANH TOÁN KHI NHẬN HÀNG</a>
                     </div>
                 </div>
             </div>

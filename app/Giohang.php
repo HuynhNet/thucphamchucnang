@@ -25,7 +25,11 @@ class Giohang extends Model
             $price = $priceID->price;
         }
 
-        $giohang = ['qty'=>0, 'price' => $price, 'item' => $item];
+        if ($item->promotion_price == null){
+            $giohang = ['qty'=>0, 'price' => $price, 'item' => $item];
+        }else{
+            $giohang = ['qty'=>0, 'price' => $item->promotion_price, 'item' => $item];
+        }
 
         if($this->items){
             if(array_key_exists($id, $this->items)){
@@ -34,11 +38,19 @@ class Giohang extends Model
         }
 
         $giohang['qty']++;
-        $giohang['price'] = $price * $giohang['qty'];
+        if($item->promotion_price == null){
+            $giohang['price'] = $price * $giohang['qty'];
+        }else{
+            $giohang['price'] = $item->promotion_price * $giohang['qty'];
+        }
 
         $this->items[$id] = $giohang;
         $this->totalQty++;
-        $this->totalPrice += $price;
+        if($item->promotion_price == null){
+            $this->totalPrice += $price;
+        }else{
+            $this->totalPrice += $item->promotion_price;
+        }
 
     }
 
@@ -68,7 +80,11 @@ class Giohang extends Model
     public function update_cart($id,$newQty){
         $product = DB::table('products')->where('id', $id)->get();
         foreach ($product as $product){
+            $promotionPrice = 0;
             $priceID = DB::table('prices')->where('id', $product->price)->get();
+            if($product->promotion_price != null){
+                $promotionPrice = $product->promotion_price;
+            }
         }
         foreach ($priceID as $priceID){
             $price = $priceID->price;
@@ -80,7 +96,11 @@ class Giohang extends Model
             $this->items[$id]['qty'] = $newQty;
             $cut = $present_qty - $newQty;
             $this->totalQty -= $cut;
-            $this->totalPrice -= $price * $cut;
+            if($promotionPrice == 0){
+                $this->totalPrice -= $price * $cut;
+            }else{
+                $this->totalPrice -= $promotionPrice * $cut;
+            }
             if($this->items[$id]['qty']<=0){
                 unset($this->items[$id]);
             }
@@ -90,7 +110,11 @@ class Giohang extends Model
             $this->items[$id]['qty'] = $newQty;
             $add = $newQty - $present_qty;
             $this->totalQty += $add;
-            $this->totalPrice += $price * $add;
+            if($promotionPrice == 0){
+                $this->totalPrice += $price * $add;
+            }else{
+                $this->totalPrice -= $promotionPrice * $add;
+            }
             if($this->items[$id]['qty']<=0){
                 unset($this->items[$id]);
             }
@@ -112,14 +136,22 @@ class Giohang extends Model
     public function removeItem($id){
         $product = DB::table('products')->where('id', $id)->get();
         foreach ($product as $product){
+            $promotionPrice = 0;
             $priceID = DB::table('prices')->where('id', $product->price)->get();
+            if($product->promotion_price != null){
+                $promotionPrice = $product->promotion_price;
+            }
         }
         foreach ($priceID as $priceID){
             $price = $priceID->price;
         }
 
         $this->totalQty -= $this->items[$id]['qty'];
-        $this->totalPrice -= $price * $this->items[$id]['qty'];
+        if($promotionPrice == 0){
+            $this->totalPrice -= $price * $this->items[$id]['qty'];
+        }else{
+            $this->totalPrice -= $promotionPrice * $this->items[$id]['qty'];
+        }
         unset($this->items[$id]);
     }
 }

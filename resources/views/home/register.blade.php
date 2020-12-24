@@ -18,7 +18,7 @@
 
                 <div class="card" style="background-color: ghostwhite">
                     <div class="card-body">
-                        <form action="{{ url(('/check-register')) }}" method="post">
+                        <form action="{{ url('/check-register') }}" method="post">
                             @csrf
 
                             <div class="row">

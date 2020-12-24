@@ -11,8 +11,8 @@
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
+                        <li><a href="{{ url('/') }}">Trang chủ</a></li>
                         <li><a href="{{ url('/list-product') }}">Danh sách</a></li>
-                        <li><a href="">Yêu thích</a></li>
                         <li><a href="{{ url('news') }}">Tin tức</a></li>
                         <li><a href="{{ url('/contact') }}">Giới thiệu</a></li>
                     </ul>

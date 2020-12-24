@@ -7,6 +7,7 @@ use TCG\Voyager\Models\Category;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use App\Giohang;
+use Illuminate\Pagination\Paginator;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +20,9 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot()
     {
+
+        Paginator::useBootstrap();
+
         view()->composer('layouts.hero_banner', function ($view){
             $typeProduct = DB::table('categories')->take(11)->get();
             $view->with([
@@ -53,6 +57,19 @@ class AppServiceProvider extends ServiceProvider
         });
 
         view()->composer('home.checkout', function($view){
+            if(Session('cart')){
+                $oldCart = Session::get('cart');
+                $cart = new Giohang($oldCart);
+                $view->with([
+                    'cart'=>Session::get('cart'),
+                    'product_cart'=>$cart->items,
+                    'totalPrice'=>$cart->totalPrice,
+                    'totalQty'=>$cart->totalQty
+                ]);
+            }
+        });
+
+        view()->composer('home.checkout_area', function($view){
             if(Session('cart')){
                 $oldCart = Session::get('cart');
                 $cart = new Giohang($oldCart);
